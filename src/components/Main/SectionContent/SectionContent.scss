@@ -1,0 +1,58 @@
+@import '../../../assets/variables.scss';
+
+.section_content {
+  .row {
+    margin: auto;
+    width: 74%;
+    @media (max-width: $xxl) {
+      width: 90%;
+    }
+    @media (max-width: $xl) {
+      width: 90%;
+    }
+    .breed-one {
+      @media (max-width: $xl) {
+        margin-top: 30px;
+        margin-bottom: 0px;
+      }
+    }
+    .breed-two {
+      @media (max-width: $xl) {
+        margin-top: 30px;
+        margin-bottom: 50px;
+      }
+    }
+  }
+  button {
+    background-color: $primary-color;
+    border: none;
+    border-radius: 50px;
+    color: white;
+    font-size: 1.4rem;
+    padding: .7em 1em;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    width: 20rem;
+    margin: 0 10px 50px 10px;
+    @media (max-width: $md) {
+      margin-top: 2rem;
+    }
+    @media (max-width: $sm) {
+      padding: 1.2em;
+      margin: 0 .8rem 3rem .8rem;
+      font-size: 1.2rem;
+    }
+    &:hover {
+      background-color: lighten($primary-color, 10);
+    }
+  }
+  .red {
+    background-color: #f15a24;
+    &:hover {
+      background-color: lighten(#f15a24, 10);
+    }
+  }
+}
+
+

@@ -1,0 +1,87 @@
+@import '../../../assets/variables.scss';
+.section_inputForm {
+  height: 250px;
+  background-color: $secondary-color;
+  position: relative;
+  @media (max-width: $lg) {
+    height: 300px;
+  }
+  .form {
+    width: 75%;
+    height: 100%;
+    margin: auto;
+
+    @media (max-width: $xl) {
+      width: 90%;
+    }
+
+    @media (max-width: $md) {
+      width: 90%;
+    }
+    
+    .row {
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      @media (max-width: $md) {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+      }
+      @media (max-width: $lg) {
+        padding-top: 5rem;
+        align-items: flex-start;
+      }
+      .form-control {
+        
+        @media (max-width: $lg) {
+          margin-top: 35px;
+        }
+        @media (max-width: $md) {
+          margin-top:10px;
+          margin-bottom:10px;
+        }
+      }
+    }
+  }
+  button {
+    background-color: $primary-color;
+    border: none;
+    border-radius: 50px;
+    color: white;
+    font-size: 1.8rem;
+    padding-left: 1.2em;
+    padding: .6em 2em;
+    position: relative;
+    text-align: left;
+    text-transform: uppercase;
+    width: 100%;
+    margin: 0;
+    
+    @media (max-width: $lg) {
+       margin-bottom: 35px;
+      }
+    @media (max-width: $md) {
+       margin-top: 2rem;
+      }
+    
+    i {
+      position: absolute;
+      right: 2em;
+      top: 50%;
+      transform: translateY(-50%);
+      line-height: 1;
+    }
+    &:hover {
+      background-color: lighten($primary-color, 10);
+    }
+  }
+  select {
+    font-size: 1.8rem;
+    border: 1px solid $primary-color;
+    border-radius: 10px;
+    padding: .6em 1
+    em;
+    height:50px;
+    color: $secondary-color;
+  }
+}

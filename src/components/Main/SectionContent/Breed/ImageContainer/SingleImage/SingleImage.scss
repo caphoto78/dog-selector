@@ -1,0 +1,66 @@
+@import '../../../../../../assets/variables.scss';
+
+.images {
+  padding: 0px;
+
+  .img-wrapper {
+    margin: 5px;
+    border: 1px solid $primary-color;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: $secondary-color;
+    width:6vw;
+    height: 6vw;
+    position: relative;
+    @media (max-width:$xxl) {
+      width:9vw;
+      height: 9vw;
+    }
+    
+    @media (max-width:$xl) {
+      width:9vw;
+      height: 9vw;
+    }
+  
+    @media (max-width:$lg) {
+      width:18vw;
+      height: 18vw;
+    }
+    @media (max-width:$md) {
+      width:17vw;
+      height: 17vw;
+    }
+    @media (max-width:$sm) {
+      width:16.5vw;
+      height: 16.5vw;
+    }
+
+  }
+}
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+input[type=checkbox] {
+  z-index: 1;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  @media (max-width: $xxl) {
+    right: 15px;
+    top: 15px;
+  }
+  @media (max-width: $xl) {
+    right: 10px;
+    top: 10px;
+  }
+  @media (max-width: $lg) {
+    right: 15px;
+    top: 15px;
+  }
+  @media (max-width: $md) {
+    right: 10px;
+    top: 10px;
+  }
+}
