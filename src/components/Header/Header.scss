@@ -18,6 +18,10 @@ header{
     @media (max-width: $md) {
       font-size: 2.5rem;
     }
+
+    @media (max-width: $sm) {
+      font-size: 2rem;
+    }
   }
   h1 {
     font-family: 'Indie Flower', cursive;
@@ -30,6 +34,9 @@ header{
     }
     @media (max-width: $md) {
       font-size: 4rem;
+    }
+    @media (max-width: $sm) {
+      font-size: 3rem;
     }
   }
   

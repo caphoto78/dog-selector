@@ -37,6 +37,11 @@ footer {
       padding-top: 15px;
       padding-bottom: 15px;
     }
+    small {
+      @media (max-width: $sm) {
+        font-size: 1.1rem;
+      }
+    }
   }
   
 }
