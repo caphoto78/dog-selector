@@ -1,0 +1,26 @@
+@import '../../../../../assets/variables.scss';
+
+.pagination_container {
+    margin: 0;
+    text-align: center;
+    a {
+      margin: 15px;
+      color: $primary-color;
+
+      @media (max-width: $sm) {
+        margin: 12px;
+        font-size: 1.8rem;
+      }
+
+      &:hover {
+        color: #f7f2e7;
+        text-decoration: none;
+      }
+    }
+    .disabled {
+      color: lighten($primary-color, 25);
+    }
+    .active {
+      color: white;
+    }
+  }
