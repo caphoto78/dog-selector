@@ -3,12 +3,22 @@
 .h2 {
     background-color: $secondary-color;
     padding: 10px 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     h2 {
       font-weight: 700;
       color: $primary-color;
       font-size: 2.8rem;
       @media (max-width: $sm) {
         font-size: 2rem;
+      }
+    }
+    h3 {
+      color: $primary-color;
+      @media (max-width: $sm) {
+        font-size: 1.5rem;
       }
     }
   }

@@ -7,8 +7,8 @@ import CardHeader from './CardHeader/CardHeader'
 const Breed = (props) => {
   return (
     <div className={"col-lg breed " + props.className}>
-      <CardHeader></CardHeader>
-      <ImageContainer></ImageContainer>
+      <CardHeader {...props}></CardHeader>
+      <ImageContainer {...props}></ImageContainer>
       <Pagination></Pagination>
     </div>
   )

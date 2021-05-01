@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import './InputForm.scss'
 
 const InputForm = (props) => {
+  // Capitalize First Letter
   const capitalize = (str) => {
     return str.charAt(0).toUpperCase() + str.slice(1)
   }
+
+  // Listing Breeds and SubBreeds inside the select tag
   let breedGrouping = Object.values(props.breeds);
   let breedListNames = Object.keys(props.breeds);
 
@@ -25,15 +28,21 @@ const InputForm = (props) => {
       )
     }
   });
+
+  //Handling the state with my new selections
+
   let mySelections = []
   const handleSelect = (e) => {
     mySelections.push(e.target.value)
   }
-
+  const select1Ref = useRef()
+  const select2Ref = useRef()
   const submitHandler = (e) => {
     e.preventDefault();
     props.onSubmitBreed(mySelections)
     mySelections = []
+    select1Ref.current.value = "Choose 1st Breed"
+    select2Ref.current.value = "Choose 2nd Breed"
   }
 
 
@@ -46,8 +55,11 @@ const InputForm = (props) => {
             <select
               className="form-control"
               id="formControlSelect1"
-              onChange={(e) => handleSelect(e)}>
-              <option value="Choose 1st Breed" disabled selected hidden>Choose 1st Breed</option>
+              ref={select1Ref}
+              defaultValue="Choose 1st Breed"
+              onChange={(e) => handleSelect(e)}
+            >
+              <option value="Choose 1st Breed" disabled hidden>Choose 1st Breed</option>
               {dogList}
             </select>
           </div>
@@ -55,9 +67,12 @@ const InputForm = (props) => {
           <div className="col-lg-4 col-md-6 col-md">
             <select
               className="form-control"
-              id="formControlSelect1"
-              onChange={(e) => handleSelect(e)}>
-              <option value="Choose 2nd Breed" disabled selected hidden>Choose 2nd Breed</option>
+              id="formControlSelect2"
+              defaultValue="Choose 2nd Breed"
+              onChange={(e) => handleSelect(e)}
+              ref={select2Ref}
+            >
+              <option value="Choose 2nd Breed" disabled hidden>Choose 2nd Breed</option>
               {dogList}
             </select>
           </div>
