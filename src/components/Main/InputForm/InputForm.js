@@ -1,11 +1,15 @@
-import React, { useRef } from 'react'
+import React, { useState, useRef } from 'react'
 import './InputForm.scss'
+import { capitalize } from '../../../helper'
+
 
 const InputForm = (props) => {
-  // Capitalize First Letter
-  const capitalize = (str) => {
-    return str.charAt(0).toUpperCase() + str.slice(1)
-  }
+
+  const [firstSelect, setFirstSelect] = useState('')
+  const [secondSelect, setSecondSelect] = useState('')
+
+  const subbreedOption = useRef()
+  console.log(subbreedOption.current)
 
   // Listing Breeds and SubBreeds inside the select tag
   let breedGrouping = Object.values(props.breeds);
@@ -16,9 +20,21 @@ const InputForm = (props) => {
     let breedName = breedListNames[breedIndexNumber];
     if (subBreed.length > 0) {
       return (
-        <optgroup key={breedName} label={capitalize(breedName)}>
-          {subBreed.map(el => {
-            return <option key={el} value={el}>{capitalize(el)}</option>
+        <optgroup
+          key={breedName}
+          value={breedName}
+          label={capitalize(breedName)}
+        >
+          {subBreed.map(subbreedElement => {
+            return (
+              <option
+                key={subbreedElement}
+                value={`${breedName}/${subbreedElement}`}
+                ref={subbreedOption}
+              >
+                {capitalize(subbreedElement) + ' ' + capitalize(breedName)}
+              </option>
+            )
           })}
         </optgroup >
       )
@@ -31,16 +47,29 @@ const InputForm = (props) => {
 
   //Handling the state with my new selections
 
-  let mySelections = []
-  const handleSelect = (e) => {
-    mySelections.push(e.target.value)
+  const handleFirstSelect = (e) => {
+    setFirstSelect(e.target.value)
+    console.log('e.target =', e.target.value)
   }
+  const handleSecondSelect = (e) => {
+    setSecondSelect(e.target.value)
+  }
+
+  let mySelections = [firstSelect, secondSelect]
+
+
+  console.log('mySelections = ' + mySelections)
+  console.log('firstSelect State = ' + firstSelect, 'secondSelect State = ' + secondSelect)
+
+
   const select1Ref = useRef()
   const select2Ref = useRef()
+
   const submitHandler = (e) => {
     e.preventDefault();
     props.onSubmitBreed(mySelections)
-    mySelections = []
+    setFirstSelect('')
+    setSecondSelect('')
     select1Ref.current.value = "Choose 1st Breed"
     select2Ref.current.value = "Choose 2nd Breed"
   }
@@ -57,7 +86,7 @@ const InputForm = (props) => {
               id="formControlSelect1"
               ref={select1Ref}
               defaultValue="Choose 1st Breed"
-              onChange={(e) => handleSelect(e)}
+              onChange={(e) => handleFirstSelect(e)}
             >
               <option value="Choose 1st Breed" disabled hidden>Choose 1st Breed</option>
               {dogList}
@@ -69,10 +98,11 @@ const InputForm = (props) => {
               className="form-control"
               id="formControlSelect2"
               defaultValue="Choose 2nd Breed"
-              onChange={(e) => handleSelect(e)}
+              onChange={(e) => handleSecondSelect(e)}
               ref={select2Ref}
             >
-              <option value="Choose 2nd Breed" disabled hidden>Choose 2nd Breed</option>
+              <option
+                value="Choose 2nd Breed" disabled hidden>Choose 2nd Breed</option>
               {dogList}
             </select>
           </div>

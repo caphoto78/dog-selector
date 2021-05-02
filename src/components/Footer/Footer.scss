@@ -1,6 +1,7 @@
 @import '../../assets/variables.scss';
 
 footer {
+  z-index: 1;
   height: 60px;
   width: 100vw;
   background-color: $primary-color;

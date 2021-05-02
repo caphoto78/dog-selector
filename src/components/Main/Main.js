@@ -11,28 +11,33 @@ const Main = () => {
   const [breedImages2, setBreedImages2] = useState([])
 
   const handleSelectedBreeds = (payload) => {
+
     setSelectedBreed1(payload[0])
     setSelectedBreed2(payload[1])
   }
+  console.log('selectedBreed1---' + selectedBreed1)
+  console.log('selectedBreed2---' + selectedBreed2)
+
   useEffect(() => {
-    const getBreeds = async () => {
-      try {
-        let response = await axios.get('breeds/list/all')
-        setBreeds(response.data.message)
-      }
-      catch (error) {
-        console.log('Error', error);
-      }
-    }
-    getBreeds()
+    getBreedsList()
   }, [])
+
+  const getBreedsList = async () => {
+    try {
+      let response = await axios.get('breeds/list/all')
+      setBreeds(response.data.message)
+    }
+    catch (error) {
+      console.log('Error', error);
+    }
+  }
 
   const getBreedImages = async (breed) => {
     try {
       let response = await axios.get(`breed/${breed}/images`)
-      if (breed === selectedBreed1) {
+      if (breed && breed === selectedBreed1) {
         setBreedImages1(response.data.message)
-      } else if (breed === selectedBreed2) {
+      } else if (breed && breed === selectedBreed2) {
         setBreedImages2(response.data.message)
       }
     }
@@ -40,6 +45,8 @@ const Main = () => {
       console.log('Error', error);
     }
   }
+
+
   useEffect(() => {
     if (selectedBreed1) {
       getBreedImages(selectedBreed1)
@@ -51,16 +58,6 @@ const Main = () => {
 
 
 
-  /*   const getSubbreedImages = async (breed, subBreed) => {
-      try {
-        let response = await axios(`breed/${breed}/${subBreed}/images`);
-        console.log(response.data.message)
-      }
-      catch (error) {
-        console.log(error);
-      }
-    }
-    getSubbreedImages() */
 
 
 

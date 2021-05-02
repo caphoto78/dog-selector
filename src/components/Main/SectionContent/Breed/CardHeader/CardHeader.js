@@ -1,9 +1,9 @@
 import React from 'react'
 import './CardHeader.scss'
+import { capitalize } from '../../../../../helper'
 
 const CardHeader = (props) => {
 
-  console.log(props)
   const imgNumber = (breed) => {
     if (breed) {
       return <h3>{breed.length} images</h3>
@@ -14,7 +14,7 @@ const CardHeader = (props) => {
 
   const breedName = (breed) => {
     if (breed) {
-      return <h2>{breed}</h2>
+      return <h2>{capitalize(breed)}</h2>
     } else {
       return <h2>Breed Name</h2>
     }
