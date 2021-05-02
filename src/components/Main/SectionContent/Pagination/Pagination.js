@@ -16,6 +16,14 @@ const Pagination = (props) => {
   }
 
   useEffect(() => {
+    if (props.breedImages1) {
+      props.currentPage1(currentBtn)
+    } else {
+      props.currentPage2(currentBtn)
+    }
+  }, [currentBtn])
+
+  useEffect(() => {
 
     let tempNumberOfPages = [...arrOfCurrentBtns]
 
@@ -57,11 +65,11 @@ const Pagination = (props) => {
         href='#'
         onClick={() => {
           setCurrentBtn(1)
-          if (props.breedImages1) {
+          /* if (props.breedImages1) {
             props.currentPage1(currentBtn)
           } else {
             props.currentPage2(currentBtn)
-          }
+          } */
         }}
         className={currentBtn <= 3 ? 'disabled' : undefined}
       >
@@ -72,11 +80,11 @@ const Pagination = (props) => {
         href='#'
         onClick={() => {
           setCurrentBtn((prev) => prev === 1 ? prev : prev - 1)
-          if (props.breedImages1) {
+          /* if (props.breedImages1) {
             props.currentPage1(currentBtn)
           } else {
             props.currentPage2(currentBtn)
-          }
+          } */
         }}
         className={currentBtn === 1 ? 'disabled' : undefined}
       >
@@ -90,11 +98,11 @@ const Pagination = (props) => {
             key={index}
             onClick={() => {
               setCurrentBtn(page)
-              if (props.breedImages1) {
+              /* if (props.breedImages1) {
                 props.currentPage1(currentBtn)
               } else {
                 props.currentPage2(currentBtn)
-              }
+              } */
             }}
             className={currentBtn === page ? 'active' : undefined}><span>{page}</span></a>
         )
@@ -104,11 +112,11 @@ const Pagination = (props) => {
         href='#'
         onClick={() => {
           setCurrentBtn((prev) => prev === numberOfPages.length ? prev : prev + 1)
-          if (props.breedImages1) {
+          /* if (props.breedImages1) {
             props.currentPage1(currentBtn)
           } else {
             props.currentPage2(currentBtn)
-          }
+          } */
         }}
         className={currentBtn === numberOfPages.length ? 'disabled' : undefined}
       >
@@ -119,11 +127,11 @@ const Pagination = (props) => {
         href='#'
         onClick={() => {
           setCurrentBtn(numberOfPages.length)
-          if (props.breedImages1) {
+          /* if (props.breedImages1) {
             props.currentPage1(currentBtn)
           } else {
             props.currentPage2(currentBtn)
-          }
+          } */
         }}
         className={currentBtn >= numberOfPages.length - 2 ? 'disabled' : undefined}
       >
