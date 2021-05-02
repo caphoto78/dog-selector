@@ -1,9 +1,9 @@
 import React from 'react'
 // import Breed from './Breed/Breed'
 import Card from '../../UI/Card/Card'
-import CardHeader from '../SectionContent/Breed/CardHeader/CardHeader'
-import ImageContainer from '../SectionContent/Breed/ImageContainer/ImageContainer'
-import Pagination from '../SectionContent/Breed/Pagination/Pagination'
+import CardHeader from '../SectionContent/CardHeader/CardHeader'
+import ImageContainer from '../SectionContent/ImageContainer/ImageContainer'
+import Pagination from '../SectionContent/Pagination/Pagination'
 import './SectionContent.scss'
 
 const SectionContent = (props) => {

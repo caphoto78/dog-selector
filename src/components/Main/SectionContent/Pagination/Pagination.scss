@@ -1,4 +1,4 @@
-@import '../../../../../assets/variables.scss';
+@import '../../../../assets/variables.scss';
 
 .pagination_container {
     margin: 0;
@@ -20,6 +20,8 @@
     }
     .disabled {
       color: lighten($primary-color, 25);
+      pointer-events: none;
+      cursor: initial;
     }
     .active {
       color: white;

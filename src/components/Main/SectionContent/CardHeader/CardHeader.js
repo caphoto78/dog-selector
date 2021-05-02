@@ -1,6 +1,6 @@
 import React from 'react'
 import './CardHeader.scss'
-import { capitalize } from '../../../../../helper'
+import { capitalize } from '../../../../helper'
 
 const CardHeader = (props) => {
 

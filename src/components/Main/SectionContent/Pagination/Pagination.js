@@ -9,7 +9,6 @@ const Pagination = (props) => {
   const [currentBtn, setCurrentBtn] = useState(1)
   const [arrOfCurrentBtns, setArrOfCurrentBtns] = useState([])
 
-  console.log('c u r r e n t B t n', currentBtn)
 
   const numberOfPages = []
   for (let i = 1; i <= pages; i++) {
@@ -17,6 +16,7 @@ const Pagination = (props) => {
   }
 
   useEffect(() => {
+
     let tempNumberOfPages = [...arrOfCurrentBtns]
 
     let dotsInitial = '...'
