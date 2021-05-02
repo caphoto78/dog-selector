@@ -11,4 +11,11 @@
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 4px 5px 6px 0px rgba(0,0,0,0.15);
+  @media (max-width: $sm) {
+    margin: 45px 10px 0 10px;
+  }
+  @media (max-width: $md) {
+    margin: 45px 10px 20px 10px;
+  }
+
 }

@@ -49,7 +49,7 @@ const SectionContent = (props) => {
           ></Pagination>
         </Card>
       </div>
-      <div className="row justify-content-center">
+      <div className="row justify-content-center btn-wrapper">
         <button>Select Images</button>
         <button className="red">Delete Selection</button>
       </div>

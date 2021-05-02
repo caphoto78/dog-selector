@@ -62,30 +62,16 @@ const Pagination = (props) => {
     <div className="h2 pagination_container">
 
       <a
-        href='#'
-        onClick={() => {
-          setCurrentBtn(1)
-          /* if (props.breedImages1) {
-            props.currentPage1(currentBtn)
-          } else {
-            props.currentPage2(currentBtn)
-          } */
-        }}
+        href='#!'
+        onClick={() => { setCurrentBtn(1) }}
         className={currentBtn <= 3 ? 'disabled' : undefined}
       >
         <i className="fas fa-angle-double-left"></i>
       </a>
 
       <a
-        href='#'
-        onClick={() => {
-          setCurrentBtn((prev) => prev === 1 ? prev : prev - 1)
-          /* if (props.breedImages1) {
-            props.currentPage1(currentBtn)
-          } else {
-            props.currentPage2(currentBtn)
-          } */
-        }}
+        href='#!'
+        onClick={() => { setCurrentBtn((prev) => prev === 1 ? prev : prev - 1) }}
         className={currentBtn === 1 ? 'disabled' : undefined}
       >
         <i className="fas fa-angle-left"></i>
@@ -94,29 +80,19 @@ const Pagination = (props) => {
       {arrOfCurrentBtns.map((page, index) => {
         return (
           <a
-            href='#'
+            href='#!'
             key={index}
             onClick={() => {
               setCurrentBtn(page)
-              /* if (props.breedImages1) {
-                props.currentPage1(currentBtn)
-              } else {
-                props.currentPage2(currentBtn)
-              } */
             }}
             className={currentBtn === page ? 'active' : undefined}><span>{page}</span></a>
         )
       })}
 
       <a
-        href='#'
+        href='#!'
         onClick={() => {
           setCurrentBtn((prev) => prev === numberOfPages.length ? prev : prev + 1)
-          /* if (props.breedImages1) {
-            props.currentPage1(currentBtn)
-          } else {
-            props.currentPage2(currentBtn)
-          } */
         }}
         className={currentBtn === numberOfPages.length ? 'disabled' : undefined}
       >
@@ -124,15 +100,8 @@ const Pagination = (props) => {
       </a>
 
       <a
-        href='#'
-        onClick={() => {
-          setCurrentBtn(numberOfPages.length)
-          /* if (props.breedImages1) {
-            props.currentPage1(currentBtn)
-          } else {
-            props.currentPage2(currentBtn)
-          } */
-        }}
+        href='#!'
+        onClick={() => { setCurrentBtn(numberOfPages.length) }}
         className={currentBtn >= numberOfPages.length - 2 ? 'disabled' : undefined}
       >
         <i className="fas fa-angle-double-right"></i>

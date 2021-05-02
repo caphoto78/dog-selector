@@ -13,7 +13,7 @@
     .breed-one {
       @media (max-width: $xl) {
         margin-top: 30px;
-        margin-bottom: 0px;
+        margin-bottom: 50px;
       }
     }
     .breed-two {
@@ -22,6 +22,12 @@
         margin-bottom: 50px;
       }
     }
+  }
+  .btn-wrapper{
+    @media (max-width: $sm) {
+      margin: 2rem;
+    }
+    
   }
   button {
     background-color: $primary-color;
@@ -40,7 +46,7 @@
     }
     @media (max-width: $sm) {
       padding: 1.2em;
-      margin: 0 .8rem 3rem .8rem;
+      margin: 2rem .8rem 2rem .8rem;
       font-size: 1.2rem;
     }
     &:hover {
