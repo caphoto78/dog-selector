@@ -9,7 +9,7 @@ const Breed = (props) => {
     <div className={"col-lg breed " + props.className}>
       <CardHeader {...props}></CardHeader>
       <ImageContainer {...props}></ImageContainer>
-      <Pagination></Pagination>
+      <Pagination {...props}></Pagination>
     </div>
   )
 }

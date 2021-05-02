@@ -8,8 +8,6 @@ const InputForm = (props) => {
   const [firstSelect, setFirstSelect] = useState('')
   const [secondSelect, setSecondSelect] = useState('')
 
-  const subbreedOption = useRef()
-  console.log(subbreedOption.current)
 
   // Listing Breeds and SubBreeds inside the select tag
   let breedGrouping = Object.values(props.breeds);
@@ -30,7 +28,6 @@ const InputForm = (props) => {
               <option
                 key={subbreedElement}
                 value={`${breedName}/${subbreedElement}`}
-                ref={subbreedOption}
               >
                 {capitalize(subbreedElement) + ' ' + capitalize(breedName)}
               </option>
@@ -49,7 +46,6 @@ const InputForm = (props) => {
 
   const handleFirstSelect = (e) => {
     setFirstSelect(e.target.value)
-    console.log('e.target =', e.target.value)
   }
   const handleSecondSelect = (e) => {
     setSecondSelect(e.target.value)
@@ -58,7 +54,7 @@ const InputForm = (props) => {
   let mySelections = [firstSelect, secondSelect]
 
 
-  console.log('mySelections = ' + mySelections)
+  console.log(mySelections)
   console.log('firstSelect State = ' + firstSelect, 'secondSelect State = ' + secondSelect)
 
 
@@ -72,6 +68,7 @@ const InputForm = (props) => {
     setSecondSelect('')
     select1Ref.current.value = "Choose 1st Breed"
     select2Ref.current.value = "Choose 2nd Breed"
+    props.onSubmitBreed(mySelections)
   }
 
 
