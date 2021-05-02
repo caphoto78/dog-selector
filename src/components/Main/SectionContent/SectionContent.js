@@ -1,27 +1,67 @@
 import React from 'react'
-import Breed from './Breed/Breed'
+// import Breed from './Breed/Breed'
+import Card from '../../UI/Card/Card'
+import CardHeader from '../SectionContent/Breed/CardHeader/CardHeader'
+import ImageContainer from '../SectionContent/Breed/ImageContainer/ImageContainer'
+import Pagination from '../SectionContent/Breed/Pagination/Pagination'
 import './SectionContent.scss'
 
 const SectionContent = (props) => {
   return (
     <section className="section_content">
       <div className="row">
-        <Breed
-          className="breed-one"
-          breedImages1={props.breedImages1}
-          selectedBreed1={props.selectedBreed1}
-          loading={props.loading}
-          currentPage1={(payload) => props.currentPage1(payload)}
-          currPage1={props.currPage1}
-        ></Breed>
-        <Breed
-          className="breed-two"
-          breedImages2={props.breedImages2}
-          selectedBreed2={props.selectedBreed2}
-          loading={props.loading}
-          currentPage2={(payload) => props.currentPage2(payload)}
-          currPage2={props.currPage2}
-        ></Breed>
+        <Card>
+          <CardHeader
+            className="breed-one"
+            breedImages1={props.breedImages1}
+            selectedBreed1={props.selectedBreed1}
+            loading={props.loading}
+            currentPage1={(payload) => props.currentPage1(payload)}
+            currPage1={props.currPage1}
+          ></CardHeader>
+          <ImageContainer
+            className="breed-one"
+            breedImages1={props.breedImages1}
+            selectedBreed1={props.selectedBreed1}
+            loading={props.loading}
+            currentPage1={(payload) => props.currentPage1(payload)}
+            currPage1={props.currPage1}
+          ></ImageContainer>
+          <Pagination
+            className="breed-one"
+            breedImages1={props.breedImages1}
+            selectedBreed1={props.selectedBreed1}
+            loading={props.loading}
+            currentPage1={(payload) => props.currentPage1(payload)}
+            currPage1={props.currPage1}
+          ></Pagination>
+        </Card>
+        <Card>
+          <CardHeader
+            className="breed-two"
+            breedImages2={props.breedImages2}
+            selectedBreed2={props.selectedBreed2}
+            loading={props.loading}
+            currentPage2={(payload) => props.currentPage2(payload)}
+            currPage2={props.currPage2}
+          ></CardHeader>
+          <ImageContainer
+            className="breed-two"
+            breedImages2={props.breedImages2}
+            selectedBreed2={props.selectedBreed2}
+            loading={props.loading}
+            currentPage2={(payload) => props.currentPage2(payload)}
+            currPage2={props.currPage2}
+          ></ImageContainer>
+          <Pagination
+            className="breed-two"
+            breedImages2={props.breedImages2}
+            selectedBreed2={props.selectedBreed2}
+            loading={props.loading}
+            currentPage2={(payload) => props.currentPage2(payload)}
+            currPage2={props.currPage2}
+          ></Pagination>
+        </Card>
       </div>
       <div className="row justify-content-center">
         <button>Select Images</button>
