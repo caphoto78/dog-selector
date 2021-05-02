@@ -9,13 +9,25 @@ const Main = () => {
   const [selectedBreed2, setSelectedBreed2] = useState('')
   const [breedImages1, setBreedImages1] = useState([])
   const [breedImages2, setBreedImages2] = useState([])
+  const [loading, setLoading] = useState(false)
+  const [currentPage1, setCurrentPage1] = useState(1)
+  const [currentPage2, setCurrentPage2] = useState(1)
+  console.log('CURRENT PAGE 1', currentPage1)
+  console.log('CURRENT PAGE 2', currentPage2)
+
+
 
   const handleSelectedBreeds = (payload) => {
     setSelectedBreed1(payload[0])
     setSelectedBreed2(payload[1])
   }
-  console.log('selectedBreed1---' + selectedBreed1)
-  console.log('selectedBreed2---' + selectedBreed2)
+
+  const handleCurrentPage1 = (currentPage) => {
+    setCurrentPage1(currentPage)
+  }
+  const handleCurrentPage2 = (currentPage) => {
+    setCurrentPage2(currentPage)
+  }
 
   useEffect(() => {
     getBreedsList()
@@ -33,12 +45,14 @@ const Main = () => {
 
   const getBreedImages = async (breed) => {
     try {
+      setLoading(true)
       let response = await axios.get(`breed/${breed}/images`)
       if (breed === selectedBreed1) {
         setBreedImages1(response.data.message)
       } else if (breed === selectedBreed2) {
         setBreedImages2(response.data.message)
       }
+      setLoading(false)
     }
     catch (error) {
       console.log('Error', error);
@@ -64,9 +78,6 @@ const Main = () => {
 
 
 
-
-
-
   return (
     <main>
       <InputForm
@@ -74,10 +85,15 @@ const Main = () => {
         onSubmitBreed={(payload) => handleSelectedBreeds(payload)}
       ></InputForm>
       <SectionContent
+        currPage1={currentPage1}
+        currPage2={currentPage2}
         breedImages1={breedImages1}
         breedImages2={breedImages2}
         selectedBreed1={selectedBreed1}
         selectedBreed2={selectedBreed2}
+        loading={loading}
+        currentPage1={(payload) => handleCurrentPage1(payload)}
+        currentPage2={(payload) => handleCurrentPage2(payload)}
       ></SectionContent>
     </main>
   )

@@ -54,10 +54,6 @@ const InputForm = (props) => {
   let mySelections = [firstSelect, secondSelect]
 
 
-  console.log(mySelections)
-  console.log('firstSelect State = ' + firstSelect, 'secondSelect State = ' + secondSelect)
-
-
   const select1Ref = useRef()
   const select2Ref = useRef()
 

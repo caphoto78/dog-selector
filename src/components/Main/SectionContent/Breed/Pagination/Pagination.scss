@@ -6,6 +6,7 @@
     a {
       margin: 15px;
       color: $primary-color;
+      cursor: pointer;
 
       @media (max-width: $sm) {
         margin: 12px;
