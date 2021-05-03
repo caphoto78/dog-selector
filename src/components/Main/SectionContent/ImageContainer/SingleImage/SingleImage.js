@@ -18,7 +18,8 @@ const SingleImage = (props) => {
         return (
           <div key={index} className="images col-3">
             <div className="img-wrapper">
-              <input type="checkbox" name={`select_img${index}`} />
+              {props.toggleSelect ? <input type="checkbox" name={`select_img${index}`} /> : ''}
+
               <img src={img} alt="" />
             </div>
           </div>

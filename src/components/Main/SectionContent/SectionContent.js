@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 // import Breed from './Breed/Breed'
 import Card from '../../UI/Card/Card'
 import CardHeader from '../SectionContent/CardHeader/CardHeader'
@@ -7,6 +7,13 @@ import Pagination from '../SectionContent/Pagination/Pagination'
 import './SectionContent.scss'
 
 const SectionContent = (props) => {
+
+  const [toggleSelect, setToggleSelect] = useState(false)
+  console.log(toggleSelect)
+  const handleToggle = () => {
+    setToggleSelect((prevState => prevState = !prevState))
+  }
+
   return (
     <section className="section_content">
       <div className="row">
@@ -21,6 +28,7 @@ const SectionContent = (props) => {
             breedImages1={props.breedImages1}
             loading={props.loading}
             currPage1={props.currPage1}
+            toggleSelect={toggleSelect}
           ></ImageContainer>
           <Pagination
             className="breed-one"
@@ -40,6 +48,7 @@ const SectionContent = (props) => {
             breedImages2={props.breedImages2}
             loading={props.loading}
             currPage2={props.currPage2}
+            toggleSelect={toggleSelect}
           ></ImageContainer>
           <Pagination
             className="breed-two"
@@ -50,8 +59,14 @@ const SectionContent = (props) => {
         </Card>
       </div>
       <div className="row justify-content-center btn-wrapper">
-        <button>Select Images</button>
-        <button className="red">Delete Selection</button>
+        <button
+          className={toggleSelect ? 'active1' : ''}
+          onClick={handleToggle}
+        >Select Images</button>
+        <button
+          className={!toggleSelect ? 'disabled1' : 'red'}
+          disabled={!toggleSelect}
+        >Delete Selection</button>
       </div>
     </section>
   )
