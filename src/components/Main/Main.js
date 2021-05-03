@@ -111,6 +111,18 @@ const Main = () => {
       )
     }
   }
+  const handleDelete = () => {
+    if (breedImages1) {
+      setBreedImages1(
+        breedImages1.filter(item => item.select != true)
+      )
+    }
+    if (breedImages2) {
+      setBreedImages2(
+        breedImages2.filter(item => item.select != true)
+      )
+    }
+  }
 
   return (
     <main>
@@ -129,6 +141,7 @@ const Main = () => {
         currentPage1={(payload) => handleCurrentPage1(payload)}
         currentPage2={(payload) => handleCurrentPage2(payload)}
         onSetImgChecked={(payload) => onSetImgChecked(payload)}
+        handleDelete={handleDelete}
       ></SectionContent>
     </main>
   )

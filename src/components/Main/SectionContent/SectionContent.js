@@ -13,6 +13,7 @@ const SectionContent = (props) => {
     setToggleSelect((prevState => prevState = !prevState))
   }
 
+
   return (
     <section className="section_content">
       <div className="row">
@@ -67,6 +68,7 @@ const SectionContent = (props) => {
         <button
           className={!toggleSelect ? 'disabled1' : 'red'}
           disabled={!toggleSelect}
+          onClick={props.handleDelete}
         >Delete Selection</button>
       </div>
     </section>
