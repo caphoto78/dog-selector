@@ -6,7 +6,10 @@ const ImageContainer = (props) => {
   return (
     <div className="img_container">
       <div className="row">
-        <SingleImage {...props}></SingleImage>
+        <SingleImage
+          {...props}
+          onSetImgChecked={(payload) => props.onSetImgChecked(payload)}
+        ></SingleImage>
       </div>
     </div>
   )

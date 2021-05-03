@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import InputForm from './InputForm/InputForm'
 import SectionContent from './SectionContent/SectionContent'
 import axios from '../../axios'
+import { v4 as uuidv4 } from 'uuid'
 
 const Main = () => {
   const [breeds, setBreeds] = useState([])
@@ -12,10 +13,9 @@ const Main = () => {
   const [loading, setLoading] = useState(false)
   const [currentPage1, setCurrentPage1] = useState(1)
   const [currentPage2, setCurrentPage2] = useState(1)
-  console.log('CURRENT PAGE 1', currentPage1)
-  console.log('CURRENT PAGE 2', currentPage2)
 
-
+  console.log('breedImages1', breedImages1)
+  console.log('breedImages2', breedImages2)
 
   const handleSelectedBreeds = (payload) => {
     setSelectedBreed1(payload[0])
@@ -48,9 +48,21 @@ const Main = () => {
       setLoading(true)
       let response = await axios.get(`breed/${breed}/images`)
       if (breed === selectedBreed1) {
-        setBreedImages1(response.data.message)
+        setBreedImages1(response.data.message.map(item => {
+          return {
+            id: uuidv4(),
+            imgs: item,
+            select: false
+          }
+        }))
       } else if (breed === selectedBreed2) {
-        setBreedImages2(response.data.message)
+        setBreedImages2(response.data.message.map(item => {
+          return {
+            id: uuidv4(),
+            imgs: item,
+            select: false
+          }
+        }))
       }
       setLoading(false)
     }
@@ -76,7 +88,29 @@ const Main = () => {
   }, [selectedBreed1, selectedBreed2])
 
 
+  const onSetImgChecked = (payload) => {
+    if (breedImages1) {
+      setBreedImages1(
+        breedImages1.map(data => {
+          if (payload.id === data.id) {
+            data.select = payload.checked;
+          }
+          return data
+        })
+      )
 
+    }
+    if (breedImages2) {
+      setBreedImages2(
+        breedImages2.map(data => {
+          if (payload.id === data.id) {
+            data.select = payload.checked;
+          }
+          return data
+        })
+      )
+    }
+  }
 
   return (
     <main>
@@ -94,6 +128,7 @@ const Main = () => {
         loading={loading}
         currentPage1={(payload) => handleCurrentPage1(payload)}
         currentPage2={(payload) => handleCurrentPage2(payload)}
+        onSetImgChecked={(payload) => onSetImgChecked(payload)}
       ></SectionContent>
     </main>
   )

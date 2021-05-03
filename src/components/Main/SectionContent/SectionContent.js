@@ -9,7 +9,6 @@ import './SectionContent.scss'
 const SectionContent = (props) => {
 
   const [toggleSelect, setToggleSelect] = useState(false)
-  console.log(toggleSelect)
   const handleToggle = () => {
     setToggleSelect((prevState => prevState = !prevState))
   }
@@ -29,6 +28,7 @@ const SectionContent = (props) => {
             loading={props.loading}
             currPage1={props.currPage1}
             toggleSelect={toggleSelect}
+            onSetImgChecked={(payload) => props.onSetImgChecked(payload)}
           ></ImageContainer>
           <Pagination
             className="breed-one"
@@ -49,6 +49,7 @@ const SectionContent = (props) => {
             loading={props.loading}
             currPage2={props.currPage2}
             toggleSelect={toggleSelect}
+            onSetImgChecked={(payload) => props.onSetImgChecked(payload)}
           ></ImageContainer>
           <Pagination
             className="breed-two"
