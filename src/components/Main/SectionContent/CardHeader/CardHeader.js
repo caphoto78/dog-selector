@@ -4,6 +4,8 @@ import { capitalize } from '../../../../helper'
 
 const CardHeader = (props) => {
 
+  // console.log('CardHeader RUNNING')
+
   const imgNumber = (breed) => {
     if (breed) {
       return <h3>{breed.length} images</h3>

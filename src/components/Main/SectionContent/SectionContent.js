@@ -7,13 +7,14 @@ import Pagination from '../SectionContent/Pagination/Pagination'
 import './SectionContent.scss'
 
 const SectionContent = (props) => {
+  
+  // console.log('SectionContent RUNNING')
 
   const [toggleSelect, setToggleSelect] = useState(false)
   const handleToggle = () => {
     setToggleSelect((prevState => prevState = !prevState))
   }
 
-console.log('SecionContent RUNNING')
   return (
     <section className="section_content">
       <div className="row">
@@ -75,4 +76,4 @@ console.log('SecionContent RUNNING')
   )
 }
 
-export default React.memo(SectionContent)
+export default SectionContent

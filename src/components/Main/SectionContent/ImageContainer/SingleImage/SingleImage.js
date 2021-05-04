@@ -3,13 +3,15 @@ import './SingleImage.scss'
 
 
 const SingleImage = (props) => {
+
+  // console.log('SingleImage RUNNING')
+
   const imgsPerPage = 8
   const indexOfLastImg = props.breedImages1 ? props.currPage1 * imgsPerPage : props.currPage2 * imgsPerPage
   const indexOfFirstImg = indexOfLastImg - imgsPerPage
 
   const currentPageImgs1 = props.breedImages1 && props.breedImages1.slice(indexOfFirstImg, indexOfLastImg)
   const currentPageImgs2 = props.breedImages2 && props.breedImages2.slice(indexOfFirstImg, indexOfLastImg)
-
 
 
 
@@ -46,4 +48,4 @@ const SingleImage = (props) => {
   )
 }
 
-export default SingleImage
+export default React.memo(SingleImage)

@@ -3,6 +3,8 @@ import './Pagination.scss'
 
 const Pagination = (props) => {
   
+  // console.log('Pagination RUNNING')
+  
   const imgsNumber = props.breedImages1 ? props.breedImages1.length : props.breedImages2.length
   const imgsPerPage = 8
   const pages = Math.ceil(imgsNumber / imgsPerPage)

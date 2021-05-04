@@ -4,10 +4,11 @@ import { capitalize } from '../../../helper'
 
 
 const InputForm = (props) => {
+  
+  // console.log('InputForm RUNNING')
 
   const [firstSelect, setFirstSelect] = useState('')
   const [secondSelect, setSecondSelect] = useState('')
-  console.log('InputForm RUNNING')
 
   // Listing Breeds and SubBreeds inside the select tag
   let breedGrouping = Object.values(props.breeds);
@@ -113,4 +114,4 @@ const InputForm = (props) => {
   )
 }
 
-export default InputForm
+export default React.memo(InputForm)

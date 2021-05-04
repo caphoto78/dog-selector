@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useCallback, useMemo } from 'react'
 import InputForm from './InputForm/InputForm'
 import SectionContent from './SectionContent/SectionContent'
 import axios from '../../axios'
@@ -14,13 +14,14 @@ const Main = () => {
   const [currentPage1, setCurrentPage1] = useState(1)
   const [currentPage2, setCurrentPage2] = useState(1)
 
-  const handleSelectedBreeds = (payload) => {
+  const handleSelectedBreeds = useCallback((payload) => {
     setSelectedBreed1(payload[0])
     setSelectedBreed2(payload[1])
-  }
+  }, [])
 
   const handleCurrentPage1 = (currentPage) => {
     setCurrentPage1(currentPage)
+    
   }
   const handleCurrentPage2 = (currentPage) => {
     setCurrentPage2(currentPage)
@@ -87,7 +88,7 @@ const Main = () => {
   }, [selectedBreed1, selectedBreed2, getBreedImages])
 
 
-  const onSetImgChecked = (payload) => {
+  const onSetImgChecked = useCallback((payload) => {
     if (breedImages1) {
       setBreedImages1(
         breedImages1.map(data => {
@@ -97,7 +98,6 @@ const Main = () => {
           return data
         })
       )
-
     }
     if (breedImages2) {
       setBreedImages2(
@@ -109,8 +109,9 @@ const Main = () => {
         })
       )
     }
-  }
-  const handleDelete = () => {
+  },[breedImages1, breedImages2])
+
+  const handleDelete = useCallback(() => {
     if (breedImages1) {
       setBreedImages1(
         breedImages1.filter(item => item.select !== true)
@@ -121,12 +122,12 @@ const Main = () => {
         breedImages2.filter(item => item.select !== true)
       )
     }
-  }
+  }, [breedImages1, breedImages2])
 
   return (
     <main>
       <InputForm
-        breeds={breeds}
+        breeds={useMemo(()=> breeds, [breeds])}
         onSubmitBreed={(payload) => handleSelectedBreeds(payload)}
       ></InputForm>
       <SectionContent

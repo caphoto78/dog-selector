@@ -3,6 +3,9 @@ import SingleImage from './SingleImage/SingleImage'
 import './ImageContainer.scss'
 
 const ImageContainer = (props) => {
+
+  // console.log('ImageContainer RUNNING')
+
   return (
     <div className="img_container">
       <div className="row">
