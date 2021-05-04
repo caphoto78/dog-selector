@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './Pagination.scss'
 
 const Pagination = (props) => {
+  
   const imgsNumber = props.breedImages1 ? props.breedImages1.length : props.breedImages2.length
   const imgsPerPage = 8
   const pages = Math.ceil(imgsNumber / imgsPerPage)
@@ -21,7 +22,7 @@ const Pagination = (props) => {
     } else {
       props.currentPage2(currentBtn)
     }
-  }, [currentBtn])
+  }, [currentBtn, props])
 
   useEffect(() => {
 
@@ -57,7 +58,6 @@ const Pagination = (props) => {
   }, [currentBtn])
 
 
-
   return (
     <div className="h2 pagination_container">
 
@@ -85,7 +85,9 @@ const Pagination = (props) => {
             onClick={() => {
               setCurrentBtn(page)
             }}
-            className={currentBtn === page ? 'active' : undefined}><span>{page}</span></a>
+            className={`
+              ${currentBtn === page ? 'active' : undefined}
+            `}><span>{page}</span></a>
         )
       })}
 

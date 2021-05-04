@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import InputForm from './InputForm/InputForm'
 import SectionContent from './SectionContent/SectionContent'
 import axios from '../../axios'
@@ -14,9 +14,6 @@ const Main = () => {
   const [currentPage1, setCurrentPage1] = useState(1)
   const [currentPage2, setCurrentPage2] = useState(1)
 
-  console.log('breedImages1', breedImages1)
-  console.log('breedImages2', breedImages2)
-
   const handleSelectedBreeds = (payload) => {
     setSelectedBreed1(payload[0])
     setSelectedBreed2(payload[1])
@@ -29,11 +26,7 @@ const Main = () => {
     setCurrentPage2(currentPage)
   }
 
-  useEffect(() => {
-    getBreedsList()
-  }, [])
-
-  const getBreedsList = async () => {
+  const getBreedsList = useCallback(async () => {
     try {
       let response = await axios.get('breeds/list/all')
       setBreeds(response.data.message)
@@ -41,9 +34,15 @@ const Main = () => {
     catch (error) {
       console.log('Error', error);
     }
-  }
+  }, [])
 
-  const getBreedImages = async (breed) => {
+  useEffect(() => {
+    getBreedsList()
+  }, [getBreedsList])
+
+  
+
+  const getBreedImages = useCallback(async (breed) => {
     try {
       setLoading(true)
       let response = await axios.get(`breed/${breed}/images`)
@@ -69,7 +68,7 @@ const Main = () => {
     catch (error) {
       console.log('Error', error);
     }
-  }
+  }, [selectedBreed1, selectedBreed2])
 
 
   useEffect(() => {
@@ -85,7 +84,7 @@ const Main = () => {
     if (selectedBreed2) {
       getBreedImages(selectedBreed2)
     }
-  }, [selectedBreed1, selectedBreed2])
+  }, [selectedBreed1, selectedBreed2, getBreedImages])
 
 
   const onSetImgChecked = (payload) => {
@@ -114,12 +113,12 @@ const Main = () => {
   const handleDelete = () => {
     if (breedImages1) {
       setBreedImages1(
-        breedImages1.filter(item => item.select != true)
+        breedImages1.filter(item => item.select !== true)
       )
     }
     if (breedImages2) {
       setBreedImages2(
-        breedImages2.filter(item => item.select != true)
+        breedImages2.filter(item => item.select !== true)
       )
     }
   }

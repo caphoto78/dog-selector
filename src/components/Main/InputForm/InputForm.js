@@ -7,7 +7,7 @@ const InputForm = (props) => {
 
   const [firstSelect, setFirstSelect] = useState('')
   const [secondSelect, setSecondSelect] = useState('')
-
+  console.log('InputForm RUNNING')
 
   // Listing Breeds and SubBreeds inside the select tag
   let breedGrouping = Object.values(props.breeds);

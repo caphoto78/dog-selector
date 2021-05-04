@@ -13,7 +13,7 @@ const SectionContent = (props) => {
     setToggleSelect((prevState => prevState = !prevState))
   }
 
-
+console.log('SecionContent RUNNING')
   return (
     <section className="section_content">
       <div className="row">
@@ -75,4 +75,4 @@ const SectionContent = (props) => {
   )
 }
 
-export default SectionContent
+export default React.memo(SectionContent)
